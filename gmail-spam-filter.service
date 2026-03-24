@@ -1,0 +1,17 @@
+[Unit]
+Description=Gmail Spam Filter Daemon
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=user
+WorkingDirectory=/home/user/Claude
+ExecStart=/usr/bin/python3 /home/user/Claude/gmail_daemon.py --interval=5
+Restart=on-failure
+RestartSec=30
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
